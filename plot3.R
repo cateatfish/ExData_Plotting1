@@ -19,6 +19,8 @@ h <- read.table(
 h$Time <- strptime(paste(h$Date, h$Time), "%d/%m/%Y %H:%M:%S")
 h$Date <- as.Date(h$Date, "%d/%m/%Y")
 
+png("plot3.png", width = 480, height = 480, units = "px")
+
 plot(h$Time, h$Sub_metering_1, type = "l", 
      ylim = range(c(h$Sub_metering_1, h$Sub_metering_2, h$Sub_metering_3)), 
      ylab = "Energe sub metering", xlab = "")
@@ -32,3 +34,5 @@ plot(h$Time, h$Sub_metering_3, type = "l",
      ylab = "", xlab = "", axes = FALSE, col = "blue")
 legend("topright", col = c("black", "red", "blue"), lty = 1,
     legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+dev.off()

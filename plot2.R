@@ -19,10 +19,11 @@ h <- read.table(
 h$Time <- strptime(paste(h$Date, h$Time), "%d/%m/%Y %H:%M:%S")
 h$Date <- as.Date(h$Date, "%d/%m/%Y")
 
+png("plot2.png", width = 480, height = 480, units = "px")
 hist(
   h$Global_active_power, 
   xlab = "Global Active Power (kilwatts)",
   main = "Global Active Power",
   col = "red", ylim = c(0,1200))
-    
+dev.off()
 

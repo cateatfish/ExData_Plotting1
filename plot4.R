@@ -19,6 +19,7 @@ h <- read.table(
 h$Time <- strptime(paste(h$Date, h$Time), "%d/%m/%Y %H:%M:%S")
 h$Date <- as.Date(h$Date, "%d/%m/%Y")
 
+png("plot4.png", width = 480, height = 480, units = "px")
 attach(h)
 par(mfrow=c(2,2))
 plot(Time, Global_active_power, type = "l", xlab = "", ylab = "Global Active Power")
@@ -39,4 +40,6 @@ legend("topright", col = c("black", "red", "blue"), lty = 1,
     legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 plot(Time, Global_reactive_power, type = "l", xlab = "datetime")
+
+dev.off()
 
